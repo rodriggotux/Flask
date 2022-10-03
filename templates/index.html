@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title></title>
+    </head>
+    <body>
+        <p>Modelo</p>
+        <p>{{ 5 + 3 }}</p>
+
+        {{res}} <!--trazendo res do python-->
+
+        {% if res >= 30 %}
+          <p>Ola</p>
+        {% else %}
+        <p>nada</p>
+        {% endif %}
+
+        {% for key, value in variavel()%}
+
+        {% endfor %}
+    <form action="http://http://127.0.0.1:5000/dados" method="POST">
+        <input type="text" name="nota{{variavel}}" id="nota{{variavel}}" value="">
+        </form>
+    </body>
+</html>
