@@ -12,7 +12,7 @@ app = Flask(__name__,template_folder='templates') #para da o caminho dos arquivo
 def home():
     return render_template('index.html')
 
-#aqui eu vou passar um name via parametro de url, uma url dinamica
+#aqui eu vou passar um name via parametro de url, uma url dinamica http://127.0.0.1:5000/clientes/Rodrigo martins
 @app.route('/clientes/<name>')
 def clientes(name):
     return f'<h4>Ola {name}</h4>'
