@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Boletim</title>
+
+    </head>
+    <body>
+        <form action="http://localhost:5000/calculo" method="POST"></form>
+        {% for x in range(4) %}
+        <p>
+            <label>Nota: </label>
+            <input type="number" nim="0" max="25" name="nota{{ x }}"
+                                                  id="nota{{ x }}"
+                                                  placeholder="Nota {{ x }}"
+                                                  required>
+
+        </po>
+        </form>
+        {% endfor %}
+        <p>
+            <button type="submit">Enviar</button>
+        </p>
+    </body>
+</html>

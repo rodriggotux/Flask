@@ -1,8 +1,15 @@
 from flask import Flask
-from flask import redirect, url_for, request, abort
+from flask import redirect, url_for, request, abort, render_template
+
 
 # usando static_folder='caminno', para arquivos estaticos
-app = Flask(__name__, static_folder='static')
+# app = Flask(__name__, static_folder='static')
+
+# renderizar template, template recebe variaveis no html usando {% %} ou {{  }}
+app = Flask(__name__, template_folder='templates')
+
+upload_arquivo = os.getcwd() + './upload'
+
 
 @app.route('/')
 def home():
@@ -58,14 +65,27 @@ def login():
     else:
         abort(403)
 
+@app.route('/home')
+def inicio():
+    x = 10
+    y = 15
+    res = x + y
+    query = request.args.to_dict()
+    return render_template('index.html', res = res, query = query)
+
+# passando dados de um template paa outro
+@app.route('/main')
+def main():
+    return render_template('nota.html')
+
+@app.route('/calculo', methods=['POST'])
+def claculo():
+    total =int( request.form.to_dict().values())
+    return render_template('calculo.html')
 
 
-
-
-
-
-
-
+# manipulando sesion, tem que importar o session
+# depois vejo no youtube
 
 
 
