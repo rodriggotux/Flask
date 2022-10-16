@@ -1,7 +1,8 @@
 from flask import Flask
-from flask import redirect, url_for
+from flask import redirect, url_for, request
 
-app = Flask(__name__)
+# usando static_folder='caminno', para arquivos estaticos
+app = Flask(__name__, static_folder='static')
 
 @app.route('/')
 def home():
@@ -23,20 +24,29 @@ def cliente(name):
 def admin():
     return f'<h4> Logado como administrador </h4>'
 
+# aqui estou fazendo o redirecionamento para a pagina de admin
 @app.route('/usuario/<user>')
 def usuario(user):
     if user == 'admin':
-        return redirect(url_for('admin'))
+        return redirect(url_for('admin', admin = admin))
     else:
         return f'erro no login'
 
+# METODOS
+# essa rota vai ser do tipo POST
+# para eu saber qual o modulo usar, tenho que importar o request
+@app.route('/add', methods=['POST', 'GET'])
+def adicionar():
+    if request.method == 'POST':
+       return f'Enviado com sucesso! %s.' % request.form['name']
 
-
-
-
-
-
-
+"""
+recebendo dados via method GET
+@app.route('/dados')
+def dados():
+    usario = request.args.get('nomedo campo do input do html')
+    reurn 'ola {usuario}'
+"""
 
 
 
