@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import redirect, url_for, request
+from flask import redirect, url_for, request, abort
 
 # usando static_folder='caminno', para arquivos estaticos
 app = Flask(__name__, static_folder='static')
@@ -47,7 +47,16 @@ def dados():
     usario = request.args.get('nomedo campo do input do html')
     reurn 'ola {usuario}'
 """
-
+# trabalhando com erro
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        if request.form['name'] == 'admin' and request.form['password'] == 'admin':
+            return f'passou'
+        else:
+            abort(401) #erro, nao autorizado, pesquisar mais sobre erros
+    else:
+        abort(403)
 
 
 
