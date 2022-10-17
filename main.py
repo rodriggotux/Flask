@@ -2,13 +2,11 @@ from flask import Flask
 from flask import redirect, url_for, request, abort, render_template
 
 
-# usando static_folder='caminno', para arquivos estaticos
+# usando static_folder='caminho', para arquivos estaticos
 # app = Flask(__name__, static_folder='static')
 
 # renderizar template, template recebe variaveis no html usando {% %} ou {{  }}
 app = Flask(__name__, template_folder='templates')
-
-upload_arquivo = os.getcwd() + './upload'
 
 
 @app.route('/')
